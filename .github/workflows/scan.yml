@@ -32,8 +32,8 @@ jobs:
         if: always()
         working-directory: pos-core
         run: |
-          touch logs/gha_monitor.log
-          tail -n 40 logs/gha_monitor.log
+          mkdir -p logs
+          tail -n 40 logs/gha_monitor.log 2>/dev/null || echo 'no gha_monitor.log (logger did not create it)'
 
       - name: Commit state back
         if: always()
